@@ -1,0 +1,126 @@
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	background-color: #FFF;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+}
+
+h1 {
+	font-family: 'Satisfy', sans-serif;
+	font-size: 6em;
+	text-align: center;
+	letter-spacing: auto;
+	line-height: 1em;
+}
+
+h2 {
+	font-family: 'Satisfy', sans-serif;
+	font-size: 4em;
+	text-align: center;
+	font-weight: black;
+	letter-spacing: auto;
+}
+
+p {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 2.75em;
+	font-weight: 100;
+	text-align: center;
+	letter-spacing: auto;
+	text-transform: uppercase;
+	line-height: 0.9em;
+}
+
+.items {
+	padding: 0 0em;
+}
+
+.items p, .items h2{
+	margin: 30px 0;
+}
+
+.items h2 {
+	text-decoration: underline;
+}
+
+/*BACKGROUNDS*/
+
+.breakfast {
+	z-index: -100;
+	width: 100vw;
+	height: 100vh;
+	padding: 2em 5em;
+	margin: 0;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: black;
+	background: radial-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(images/breakfast.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-blend-mode: screen;
+}
+
+.brunch {
+	z-index: -100;
+	width: 100vw;
+	height: 100vh;
+	padding: 2em 5em;
+	margin: 0;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: black;
+  background: radial-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(images/brunch.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-blend-mode: screen;
+}
+
+.lunch {
+	z-index: -100;
+	width: 100vw;
+	height: 100vh;
+	padding: 2em 5em;
+	margin: 0;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: white;
+	background: radial-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(images/lunch.jpg);
+	background-size: cover;
+	background-position: center center;
+	background-blend-mode: multiply;
+}
+
+.dinner {
+	z-index: -100;
+	width: 100vw;
+	height: 100vh;
+	padding: 2em 5em;
+	margin: 0;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: white;
+	background: radial-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(images/dinner.jpg);
+	background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	background-blend-mode: multiply;
+}
+
+.hide {
+	display: none;
+}
