@@ -39,8 +39,8 @@ h2 {
 
 p {
 	font-family: 'Josefin Sans', sans-serif;
-	font-size: 4.25em;
-	font-weight: 900;
+	font-size: 5.75em;
+	top: 20vh;
 	text-align: center;
 	letter-spacing: auto;
 	text-transform: uppercase;
@@ -75,7 +75,8 @@ p {
 }
 
 .items {
-	padding: 2em 0 0 0;
+	position: relative;
+	top: 20vh;
 }
 
 .background {
