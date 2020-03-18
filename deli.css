@@ -18,7 +18,7 @@ body::-webkit-scrollbar {
 
 h1 {
 	font-family: 'Bellota', sans-serif;
-	font-size: 8em;
+	font-size: 5em;
 	text-align: center;
 	letter-spacing: .1em;
 	line-height: .1em;
@@ -27,7 +27,7 @@ h1 {
 
 h2 {
 	font-family: 'Bellota', sans-serif;
-	font-size: 3em;
+	font-size: 2.5em;
 	text-align: center;
 	font-weight: 700;
 	letter-spacing: auto;
@@ -38,7 +38,7 @@ h2 {
 
 h3 {
 	font-family: 'Bellota', sans-serif;
-	font-size: 4em;
+	font-size: 1.5em;
 	text-align: center;
 	font-weight: 700;
 	letter-spacing: auto;
@@ -48,7 +48,7 @@ h3 {
 
 p {
 	font-family: 'Bellota', sans-serif;
-	font-size: 2.5em;
+	font-size: 1em;
 	font-weight: 300;
 	text-align: center;
 	letter-spacing: 0.03em;
