@@ -91,6 +91,32 @@ p {
 	background-blend-mode: screen;
 }
 
+.breakfast h1 {
+	font-family: 'Satisfy', sans-serif;
+	font-size: 4em;
+	text-align: center;
+	letter-spacing: auto;
+	line-height: 1em;
+}
+
+.breakfast h2 {
+	font-family: 'Satisfy', sans-serif;
+	font-size: 2em;
+	text-align: center;
+	font-weight: black;
+	letter-spacing: auto;
+}
+
+.breakfast p {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 1.5em;
+	font-weight: 100;
+	text-align: center;
+	letter-spacing: auto;
+	text-transform: uppercase;
+	line-height: 0.9em;
+}
+
 .brunch {
 	z-index: -100;
 	width: 100vw;
