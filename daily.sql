@@ -1,8 +1,8 @@
--- MySQL dump 10.16  Distrib 10.1.38-MariaDB, for debian-linux-gnueabihf (armv7l)
+-- MySQL dump 10.17  Distrib 10.3.17-MariaDB, for debian-linux-gnueabihf (armv7l)
 --
 -- Host: localhost    Database: menu
 -- ------------------------------------------------------
--- Server version	10.1.38-MariaDB-0+deb9u1
+-- Server version	10.3.17-MariaDB-0+deb10u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -45,8 +45,31 @@ CREATE TABLE `daily` (
 
 LOCK TABLES `daily` WRITE;
 /*!40000 ALTER TABLE `daily` DISABLE KEYS */;
-INSERT INTO `daily` VALUES (1,'Monday','Breakfast','-','-','-','-','-','-','-','-','Pancakes'),(2,'Tuesday','Breakfast','-','-','-','-','-','-','-','-','Waffles'),(3,'Wednesday','Breakfast','French Toast Sticks','Bacon','Mexican Breakfast Potatoes','-','-','-','-','-','Sausages'),(4,'Thursday','Breakfast','-','-','-','-','-','-','-','-','Egg & Cheese Bagels'),(5,'Friday','Breakfast','Banana Walnut Pancakes','Maple Frizzled Ham','Diced Potatoes','Egg, Potato, Sausage & Cheese Bowls','','','','','Bagels with Cream Cheese'),(6,'Saturday','Breakfast','Buttermilk Pancakes','Sausage Patties','Fried Tater Tots','','','','','','Overnight Fondue'),(7,'Sunday','Breakfast','French Toast','Canadian Bacon','Lyonnaise Potatoes','','','','','','Scones'),(8,'Monday','Lunch','Pineapple Brown Sugar Glazed Ham','BBQ Chicken Quarters','Eggplant Parmesan','Mac N Cheese Pizza','Pulled Chicken Sandwiches','Corned Beef Banh Mi Biggie','Cabbage, Potatoes, and Bean Soup','Shrimp Gumbo',NULL),(9,'Tuesday','Lunch','Chicken Nugget Bar','Broccoli Pesto Penne','Spinach Fettuccine w/Marinara','Tandoori Chicken Pizza','Tuna Melt','Roasted Veggie Biggie','Creamy Turkey Wild Rice Soup','Southwest Three Bean Barley Soup',NULL),(10,'Wednesday','Lunch','Herb Grilled Chicken Thighs','Ground Turkey Tacos','Vegetarian Nacho Station','Greek Pizza','Chicken Tenders','Chimmichurri Chicken Biggie','Potato Chorizo Soup w/Spinach','Curried Carrot Soup',NULL),(11,'Thursday','Lunch','Beef Fajitas','Fried Catfish w/Remoulade Sauce','Vegetable Fajitas w/Rice & Black Beans','Tostado Pizza','Turkey Burgers','Greek Tuna Biggie','Smokey Navy Bean Soup','Chucky Vegetable Orzo Soup',NULL),(12,'Friday','Lunch','Fettuccine w/Alfredo or Marinara','Hot Dog Bar','Fried Tofu Steak w/Ginger Sauce & Rice','Sicilian Pizza','Sloppy Joes','Thai Chicken Biggie','Chicken & Andouille Sausage Gumbo','Potato Leek Soup',NULL),(13,'Saturday','Lunch','Open Faced Turkey Sandwich w/Gravy','Italian Sausages w/Bell Peppers & Onions','Three Bean Vegan Stew','-','-','-','Potato Leek','-',NULL),(14,'Sunday','Lunch','Mexican Chicken Cassarole','Braised Beef Tips w/Gravy','Cauliflower Tofu Stir Fry','Sausage Pizza','-','-','Three Bean Barley','-',NULL),(15,'Monday','Dinner','Taco Bar/ Chili Mac','Pork Shnitzel','Vegetarian Mac n Cheese','Mac N Cheese Pizza','Pulled Chicken Sandwiches','Corned Beef Banh Mi Biggie','Cabbage, Potatoes, and Bean Soup','Shrimp Gumbo',NULL),(16,'Tuesday','Dinner','Diablo Chicken','Yankee Pot Roast','Vegetarian Chili','Tandoori Chicken Pizza','Tuna Melt','Roasted Veggie Biggie','Creamy Turkey Wild Rice Soup','Southwest Three Bean Barley Soup',NULL),(17,'Wednesday','Dinner','Orange Chicken','Sloppy Chicago Sandwich','Vegetarian Chicken Tacos','Greek Pizza','Chicken Tenders','Chimmichurri Chicken Biggie','Potato Chorizo Soup w/Spinach','Curried Carrot Soup',NULL),(18,'Thursday','Dinner','Seafood Linguini','Nacho Bar ','Falafel w/Sides','Tostado Pizza','Turkey Burgers','Greek Tuna Biggie','Smokey Navy Bean Soup','Chucky Vegetable Orzo Soup',NULL),(19,'Friday','Dinner','Smorgasbord','Smorgasbord','Closed','Assorted Calzones','Closed','Closed','Bean & Bacon','Tomato Soup',NULL),(20,'Saturday','Dinner','Herb Roasted Chicken','Asian Beef Noodle Stir Fry','Vegetarian Lasagna','-','-','-','-','-',NULL),(21,'Sunday','Dinner','Chicken Tangine','Turkey Chili Boules','Tofu Stir Fry','-','-','-','-','-',NULL),(22,'Saturday','Brunch','Multi Grain French Toast','Sausage Patties','Fried Tater Tots','Rigatoni Pasta Bake','Vegetarian Lasagna','-','-','-',NULL),(23,'Sunday','Brunch','Lemon Poppyseed Pancakes','Canadian Bacon','Shredded Hash Brown Potatoes','Baked Pork Chops w/Fruit Chutney','Tofu Stir Fry','-','-','-',NULL);
+INSERT INTO `daily` VALUES (1,'Monday','Breakfast','Banana French Toast','Sausage Links','Tater Tots','-','-','-','-','-','Pancakes'),(2,'Tuesday','Breakfast','Buttermilk Pancakes','Frizzled Ham','Shredded Hashbrown Potatoes','-','-','-','-','-','Waffles'),(3,'Wednesday','Breakfast','French Toast Sticks','Bacon','Mexican Breakfast Potatoes','-','-','-','-','-','Sausages'),(4,'Thursday','Breakfast','Buttermilk Pancakes','Sausage Patties','Tater Tots','-','-','-','-','-','Egg & Cheese Bagels'),(5,'Friday','Breakfast','Chocolate French Toast','Corned Beef Hash','Shredded Hash Brown Potatoes','-','-','-','-','-','Bagels with Cream Cheese'),(6,'Saturday','Breakfast','Buttermilk Pancakes','Sausage Patties','Fried Tater Tots','','','','','','Overnight Fondue'),(7,'Sunday','Breakfast','French Toast','Canadian Bacon','Lyonnaise Potatoes','','','','','','Scones'),(8,'Monday','Lunch','Augie Bowls','Cobb Salads','Vegetable Noodle Bowl','-','-','-','-','-',NULL),(9,'Tuesday','Lunch','Chicken Tetrazzini','Ground Beef Tacos','Jackfruit Stir Fry','-','-','-','-','-',NULL),(10,'Wednesday','Lunch','Carolina Pulled Pork','Chicken Pot Pie','Vegan Chicken Pot Pie','-','-','-','-','-',NULL),(11,'Thursday','Lunch','Pasta Bowl w/ Spinach & Chicken','Pork Carnitas Burrito','Vegan Black Bean Burgers','-','-','-','-','-',NULL),(12,'Friday','Lunch','Pasta Bar w/ Breadsticks','Fish Sticks w/Tartar Sauce','Jackfruit Burritos','-','-','-','-','-',NULL),(13,'Saturday','Lunch','Open Faced Turkey Sandwich w/Gravy','Italian Sausages w/Bell Peppers & Onions','Three Bean Vegan Stew','-','-','-','Potato Leek','-',NULL),(14,'Sunday','Lunch','Mexican Chicken Cassarole','Braised Beef Tips w/Gravy','Cauliflower Tofu Stir Fry','Sausage Pizza','-','-','Three Bean Barley','-',NULL),(15,'Monday','Dinner','Turkey & Mushroom Stroganoff','Chicken Cordon Bleu','Vegetable Noodle Bowl','-','-','-','-','-',NULL),(16,'Tuesday','Dinner','General Tsos Chicken','Hearty Beef Stew','Jackfruit Stir Fry','-','-','-','-','-',NULL),(17,'Wednesday','Dinner','Baked Turkey Cutlets w/Mushroom Demi','Stuffed Shells & Cheese','Vegan Chicken Pot Pie','-','-','-','-','-',NULL),(18,'Thursday','Dinner','Korean BBQ Chicken','Idaho Nachos','Vegan Black Bean Burgers','-','-','-','-','-',NULL),(19,'Friday','Dinner','Fried Shrimp w/ Cocktail Sauce','Cajun Chicken Pasta','Jackfruit Burritos','-','-','-','-','-',NULL),(20,'Saturday','Dinner','Nacho Bar','Cajun Seared Pork Loin','Seared Vegetable Lo Mein','-','-','-','-','-',NULL),(21,'Sunday','Dinner','Pot Roast w/ Gravy','Pepperoni Pasta Bake','Spaghetti w/ Marinara ','-','-','-','-','-',NULL),(22,'Saturday','Brunch','Multi Grain French Toast','Sausage Patties','Tri Hashbrown Potatoes','Buffalo Chicken Fettuccine','Seared Vegetable Lo Mein','-','-','-',NULL),(23,'Sunday','Brunch','Blueberry Pancakes','Canadian Bacon','Mexican Breakfast Potatoes','Hand Carved Roasted Pit Ham','Spaghetti w/ Marinara','-','-','-',NULL);
 /*!40000 ALTER TABLE `daily` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `login`
+--
+
+DROP TABLE IF EXISTS `login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `login` (
+  `ID` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `login`
+--
+
+LOCK TABLES `login` WRITE;
+/*!40000 ALTER TABLE `login` DISABLE KEYS */;
+/*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -58,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-01 14:10:52
+-- Dump completed on 2020-04-01 16:32:01
