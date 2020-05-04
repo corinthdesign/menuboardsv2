@@ -34,13 +34,13 @@
 <script>
 var i = new Date();
 var d = i.getDay();
-var h = 12;
+var h = i.getHours();
 
 function meal() {
-        if (d >= 1 && d <= 5 && h < 11 ) {
+        if (d >= 1 && d <= 5 && h < 9 ) {
   return 0
   }
-  else if (d >= 1 && d <= 5 && h >= 11 && h <= 15){
+  else if (d >= 1 && d <= 5 && h >= 9 && h <= 15){
   return 7
   }
   else if (h > 15){
@@ -98,14 +98,14 @@ $.ajax({
 
 var i = new Date();
 var d = i.getDay();
-var h = 12;
+var h = i.getHours();
 
-if (d >= 1 && d <= 5 && h < 11 ) {
+if (d >= 1 && d <= 5 && h < 9 ) {
   $( "#menu" ).addClass("breakfast");
   document.getElementById("title").innerHTML = "Breakfast";
   console.log("Current Meal Time: Breakfast");
   }
-  else if (d >= 1 && d <= 5 && h >= 11 && h <= 15){
+  else if (d >= 1 && d <= 5 && h >= 9 && h <= 15){
   $( "#menu" ).addClass("lunch");
   document.getElementById("title").innerHTML = "Lunch";
   console.log("Current Meal Time: Lunch");
