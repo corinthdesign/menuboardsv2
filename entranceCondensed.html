@@ -20,9 +20,16 @@
   <h1 style="margin-top: 40px;">Welcome to <span id="title">Breakfast!</span></h1>
   <div class="items">
     <!--Dynamic Menu Item-->
+    <h2 class="header">Chef's Corner</h2>
     <p id="demo1">Demo1</p>
+    <h2 class="header">The Main Event</h2>
     <p id="demo2">Demo2</p>
     <p id="demo3">Demo3</p>
+    <p id="demo4">Demo4</p>
+    <h2 class="header">Soups</h2>
+    <p id="demo5">Demo5</p>
+    <p id="demo6">Demo6</p>
+    <p id="demo7">Demo7</p>
 </div>
 </div>
 
@@ -104,15 +111,17 @@ if (d >= 1 && d <= 5 && h < 11 ) {
   else if (d >= 1 && d <= 5 && h >= 11 && h <= 15){
   $( "#menu" ).addClass("lunch");
   document.getElementById("title").innerHTML = "Lunch";
-  $( "#demo3" ).addClass("hide");
   $( "#demo4" ).addClass("hide");
+  $( "#demo5" ).addClass("hide");
+  $( "#demo6" ).addClass("hide");
   $( "#demo7" ).addClass("hide");
   }
   else if (h > 15){
   $( "#menu" ).addClass("dinner");
   document.getElementById("title").innerHTML = "Dinner";
-  $( "#demo3" ).addClass("hide");
   $( "#demo4" ).addClass("hide");
+  $( "#demo5" ).addClass("hide");
+  $( "#demo6" ).addClass("hide");
   $( "#demo7" ).addClass("hide");
   }
   else if (d === 6 && h <= 15){
@@ -121,6 +130,7 @@ if (d >= 1 && d <= 5 && h < 11 ) {
   $( ".header" ).addClass("hide");
   $( "#demo5" ).addClass("hide");
   $( "#demo6" ).addClass("hide");
+  $( "#demo7" ).addClass("hide");
   }
   else if (d === 0 && h <= 15){
   $( "#menu" ).addClass("brunch");
@@ -128,6 +138,7 @@ if (d >= 1 && d <= 5 && h < 11 ) {
   $( ".header" ).addClass("hide");
   $( "#demo5" ).addClass("hide");
   $( "#demo6" ).addClass("hide");
+  $( "#demo7" ).addClass("hide");
   }
   else {
   $( "#menu" ).addClass("");
