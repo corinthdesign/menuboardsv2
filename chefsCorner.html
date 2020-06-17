@@ -89,7 +89,7 @@ $.ajax({
     datatype: 'json',
     url: 'https://audining-9cd74.firebaseio.com/menus.json?auth=8xQwtUMfWoPPrHWitSXiBhR4brljTEWg6fUJnltP', //returns as "result" variable
     success: function(result) { //returns as JSON object. This needs to become a JS object
-//DATA CONVERSION
+//DATA CONVERSION//
       /*defines variables for selecting which menus to display*/
         var menu1 = "Chefs";
         var menu2 = "Main";
@@ -97,7 +97,7 @@ $.ajax({
         var menu4 = "Pizza";
         var stringed = JSON.stringify(result); // Stringify the JSON object to return object as a string
         var parsed = JSON.parse(stringed); // Converts JSON string object to a JS object called "parsed" that can now be selected dynamically
-//DATA PLACEMENT
+//DATA PLACEMENT//
         if (meal() === "Brunch") { //if today is "brunch" display these items
         document.getElementById("demo1").innerHTML = parsed[day][menu1][meal()];
         document.getElementById("demo2").innerHTML = parsed[day][menu1][meal()];
@@ -105,13 +105,14 @@ $.ajax({
         document.getElementById("demo4").innerHTML = parsed[day][menu1][meal()];
       }else{ //else display these items
         document.getElementById("demo4").innerHTML = parsed[day][menu1][meal()];
-      }  }
+      }
 
-//DEBUGGING
+//DEBUGGING//
       console.log(parsed); // All data for parsed JSON converted to JS object
       console.log("Today is: " + day); //Day verification
       console.log("The Meal is: " + meal()) //Meal verification
       console.log("Menu: " + menu1 + "," + menu2 + "," + menu3 + "," + menu4); //Menu item verification
+    }
 });
 </script>
 
