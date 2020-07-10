@@ -115,13 +115,6 @@ form button {
   transition: all 0.4s ease;
 }
 
-form button:hover {
-  padding: .15em 5%;
-  width: 60%;
-  margin: 2em 17.5%;
-  cursor: pointer;
-}
-
 form {
 	color: #fff;
 	font-family: "nunito";
