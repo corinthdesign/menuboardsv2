@@ -1,11 +1,14 @@
-<DOCTYPE! html>
+<!DOCTYPE html>
 <head>
   <title>Augustana Dining Menu Update System | Sodexo</title>
 <link rel="stylesheet" href="interface.css">
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
 <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Satisfy&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Satisfy&display=swap" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.serializejson.js"></script>
 <script type="text/javascript"> if (screen.width <= 699) {document.location = "m/interface.html";}</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!--Retrieve JSON data-->
 
 </head>
@@ -14,77 +17,63 @@
   <!--Body-->
   <section class="menu">
     <div class="logo"></div>
+        <button id="logout" onclick="logout()">Sign Out</button>
   <h1>Menu Update System</h1>
-  <h3>Now it's easy to have great menuboards! Choose the day and meal you are wanting to update, type in
-    the new menu item for the fields you wish to update, click update menu, and you're good to go!
-    Fields left blank will stay the same. You can use the menu preview to ensure that the menu was
-    updated properly. (*Note: Menu cannot handle " ' " characters. The menu will NOT update if that character
-    is used.</h3>
+  <div class="login" id="login">  <!-- The surrounding HTML is left untouched by FirebaseUI.
+         Your app may use that space for branding, controls and other customizations.-->
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+  </div>
   <p style="padding-top: 1em; margin: 0 auto; text-align: center; color: #0090FE;">*Please direct any bug-fixes to <a href="mailto:tklopfenstein@augie.edu" target="_blank" style="color: #0090FE;">tklopfenstein@augie.edu</a></p>
   </section>
 <section class="fields">
-  <form action="php/formHandler.php" method="post">
-    <div class="parameters">
-      <div class="day_selection">
-        <label for="day_select">Which Day?</label>
-        <Select id="day_selector" name="day">
-           <option disabled selected value> -- select an option -- </option>
-           <option name="day" value="Monday">Monday</option>
-           <option name="day" value="Tuesday">Tuesday</option>
-           <option name="day" value="Wednesday">Wednesday</option>
-           <option name="day" value="Thursday">Thursday</option>
-           <option name="day" value="Friday">Friday</option>
-           <option name="day" value="Saturday">Saturday</option>
-           <option name="day" value="Sunday">Sunday</option>
-        </Select>
-      </div>
-      <div class="meal_selection" id="otherFieldDiv">
-          <label>Which Meal?</label>
-          <select id="meal_selector" name="meal">
-              <option disabled selected value> -- select an option -- </option><br>
-              <option name="meal" value="Breakfast"><label> Breakfast</label><br>
-              <option name="meal" value="Brunch" checked><label> Brunch</label><br>
-              <option name="meal" value="Lunch"><label> Lunch</label><br>
-              <option name="meal" value="Dinner"><label> Dinner</label><br>
-          </select>
-      </div>
-      </div>
-      <div>
-	<h3 class="link">Chef's Corner</h3>
-  <input style="border-radius: 100000px;" name="chefs" type="text" placeholder="Menu Item"></input>
-      </div>
-      <div>
-  <h3 class="link">The Main Event</h3>
-  <input style="border-radius: 100000px;" name="main" type="text" placeholder="Menu Item"></input>
-      </div>
-      <div>
-  <h3 class="veglink">The Vegetarian Option</h3>
-  <input style="border-radius: 100000px;" name="veg" type="text" placeholder="Menu Item"></input>
-      </div>
-      <div>
-	<h3 class="pizlink">Pizza Station</h3>
-  <input style="border-radius: 100000px;" name="piz" type="text" placeholder="Menu Item"></input>
-      </div>
-      <div>
-	<h3 class="grilllink">The Grill</h3>
-  <input style="border-radius: 100000px;" name="grill" type="text" placeholder="Menu Item"></input>
-      </div>
-      <div>
-	<h3 class="link_none">The Deli</h3>
-  <input style="border-radius: 100000px;" name="deli" type="text" placeholder="Menu Item"></input>
-      </div>
-      <div>
-	<h3 class="link_none">Soups</h3>
-  <input style="width: 49%; border-radius: 100000px 0 0 100000px;" name="soup" type="text" class="soups" placeholder="Soup 1"></input>
-  <input style="width: 49%; border-radius: 0 100000px 100000px 0;" name="soup2" type="text" class="soups" placeholder="Soup 2"></input>
-      </div>
-      <div>
-        <input id="submit" type="submit" name="submit" value="Update Menu"></input>
-      </div>
+  <form id="form">
+    <h2>Today is...</h2>
+    <input class="radio" type="radio" name="day" value="monday" onclick="menuReplace()">Monday
+    <input class="radio" type="radio" name="day" value="tuesday" onclick="menuReplace()">Tuesday
+    <input class="radio" type="radio" name="day" value="wednesday" onclick="menuReplace()">Wednesday
+    <input class="radio" type="radio" name="day" value="thursday" onclick="menuReplace()">Thursday
+    <input class="radio" type="radio" name="day" value="friday" onclick="menuReplace()">Friday
+    <input class="radio" type="radio" name="day" value="saturday" onclick="menuReplace()">Saturday
+    <input class="radio" type="radio" name="day" value="sunday" onclick="menuReplace()">Sunday
 
-      <div class="preview_table">
-      <iframe frameBorder="0" style="border: 2px #0090fe 3px; width: 190%; height: 200%; position: relative; display: block; "src="php/dynamic_table.html"></iframe>
-      </div>
+    <h2>Chef's Corner</h2>
+    <input type="text" name="chefs[breakfast]" id="chefsBreakfast" placeholder="breakfast" />
+    <input type="text" name="chefs[lunch]" id="chefsLunch" placeholder="lunch" />
+    <input type="text" name="chefs[dinner]" id="chefsDinner" placeholder="dinner" />
+
+    <h2>The Main Event</h2>
+    <input type="text" name="main[breakfast]" id="mainBreakfast" placeholder="breakfast" />
+    <input type="text" name="main[lunch]" id="mainLunch" placeholder="lunch" />
+    <input type="text" name="main[dinner]" id="mainDinner" placeholder="dinner" />
+
+    <h2>Vegetarian</h2>
+    <input type="text" name="veg[breakfast]" id="vegBreakfast" placeholder="breakfast" />
+    <input type="text" name="veg[lunch]" id="vegLunch" placeholder="lunch" />
+    <input type="text" name="veg[dinner]" id="vegDinner" placeholder="dinner" />
+
+    <h2>Pizza Station</h2>
+    <input type="text" name="pizza[breakfast]" id="pizzaBreakfast" placeholder="breakfast" />
+    <input type="text" name="pizza[lunch]" id="pizzaLunch" placeholder="lunch" />
+    <input type="text" name="pizza[dinner]" id="pizzaDinner" placeholder="dinner" />
+
+    <h2>The Grill</h2>
+    <input type="text" name="grill[breakfast]" id="grillBreakfast" placeholder="breakfast" />
+    <input type="text" name="grill[lunch]" id="grillLunch" placeholder="lunch" />
+    <input type="text" name="grill[dinner]" id="grillDinner" placeholder="dinner" />
+
+    <h2>The Deli</h2>
+    <input type="text" name="deli[special]" id="deliSpecial" placeholder="special" />
+
+    <h2>Soup 1</h2>
+    <input type="text" name="soup1[lunch]" id="soup1Lunch" placeholder="lunch" />
+    <input type="text" name="soup1[dinner]" id="soup1Dinner" placeholder="dinner" />
+
+    <h2>Soup 2</h2>
+    <input type="text" name="soup2[lunch]" id="soup2Lunch" placeholder="lunch" />
+    <input type="text" name="soup2[dinner]" id="soup2Dinner" placeholder="dinner" />
+
+    <button onclick="writeData()">Submit</button>
   </form>
 </section>
 
@@ -92,4 +81,220 @@
   Return to Menu
 </div></a>
 
+<script type="text/javascript" src="js/jquery.serializejson.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-database.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyA-8Ypwb1UzWAsBGao1UhGfiEe5PhIetkk",
+      authDomain: "audining-9cd74.firebaseapp.com",
+      databaseURL: "https://audining-9cd74.firebaseio.com",
+      projectId: "audining-9cd74",
+      storageBucket: "audining-9cd74.appspot.com",
+      messagingSenderId: "766994161939",
+      appId: "1:766994161939:web:800cefbf5c3e1baf3c3ae6",
+      measurementId: "G-CWCJ3ECS2C"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    firebase.database();
+
+// Get a reference to the database service
+var database = firebase.database();
+
+// Initialize the FirebaseUI Widget using Firebase.
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+ui.start('#firebaseui-auth-container', {
+  signInOptions: [
+    firebase.auth.EmailAuthProvider.PROVIDER_ID
+  ],
+  // Other config options...
+});
+
+var uiConfig = {
+  callbacks: {
+    signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+      // User successfully signed in.
+      // Return type determines whether we continue the redirect automatically
+      // or whether we leave that to developer to handle.
+      return false;
+    },
+    uiShown: function() {
+      // The widget is rendered.
+      // Hide the loader.
+      document.getElementById('login').style.display = 'none';
+    }
+  },
+  // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+  signInFlow: 'popup',
+  signInSuccessUrl: './interface.html',
+  signInOptions: [
+    // Leave the lines as is for the providers you want to offer your users.
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+  ],
+  // Terms of service url.
+  tosUrl: '<your-tos-url>',
+  // Privacy policy url.
+  privacyPolicyUrl: '<your-privacy-policy-url>'
+};
+
+ui.start('#firebaseui-auth-container', uiConfig);
+
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .then(function() {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  })
+  .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    var providerData = user.providerData;
+    console.log("You are signed in.")
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('form').style.display = 'block';
+    document.getElementById('logout').style.display = 'block';
+  } else {
+    // No user is signed in.
+    console.log("You are not signed in");
+    document.getElementById('login').style.display = 'block';
+    document.getElementById('form').style.display = 'none';
+    document.getElementById('logout').style.display = 'none';
+  }
+});
+
+function logout() {
+
+    return firebase.auth().signOut();
+    console.log("you are signed out")
+};
+
+function serialize() {
+  $( "form" ).submit(function( event ) {
+    console.log( $( this ).serializeArray() );
+    event.preventDefault();
+  })};
+
+function writeData() {
+  var json = $('form').find('input').not('[value=""]').serializeJSON();
+  console.log(json);
+  if (json == null) {
+    console.log("please write something");
+  } else {
+
+  function dayValue() {
+    var ele = document.getElementsByName('day');
+    for(i = 0; i < ele.length; i++) {
+        if(ele[i].checked)
+        return ele[i].value;
+          }}
+
+  alert("your data has been updated!");
+  return firebase.database().ref(dayValue()).update(json);
+}};
+
+</script>
+
+<script>
+function menuReplace() {
+
+function dayValue() {
+  var ele = document.getElementsByName('day');
+  for(i = 0; i < ele.length; i++) {
+      if(ele[i].checked)
+      return ele[i].value;
+    }};
+
+//GET REQUEST//
+$.ajax({
+    type: 'GET',
+    datatype: 'json',
+    url: 'https://audining-9cd74.firebaseio.com' + '/' + dayValue() + '/' + '.json?auth=8xQwtUMfWoPPrHWitSXiBhR4brljTEWg6fUJnltP', //returns as "result" variable
+    success: function(result) { //returns as JSON object. This needs to become a JS object
+//DATA CONVERSION//
+      /*defines variables for selecting which menus to display*/
+        var menu1 = "chefs";
+        var menu2 = "main";
+        var menu3 = "veg";
+        var menu4 = "pizza";
+        var menu5 = "grill";
+        var menu6 = "deli";
+        var menu7 = "soup1";
+        var menu8 = "soup2";
+
+        var stringed = JSON.stringify(result); // Stringify the JSON object to return object as a string
+        var parsed = JSON.parse(stringed); // Converts JSON string object to a JS object called "parsed" that can now be selected dynamically
+//DATA PLACEMENT//
+        document.getElementById(menu1 + "Breakfast").value = parsed[menu1]['breakfast'];
+        document.getElementById(menu1 + "Lunch").value = parsed[menu1]['lunch'];
+        document.getElementById(menu1 + "Dinner").value = parsed[menu1]['dinner'];
+
+        document.getElementById(menu2 + "Breakfast").value = parsed[menu2]['breakfast'];
+        document.getElementById(menu2 + "Lunch").value = parsed[menu2]['lunch'];
+        document.getElementById(menu2 + "Dinner").value = parsed[menu2]['dinner'];
+
+        document.getElementById(menu3 + "Breakfast").value = parsed[menu3]['breakfast'];
+        document.getElementById(menu3 + "Lunch").value = parsed[menu3]['lunch'];
+        document.getElementById(menu3 + "Dinner").value = parsed[menu3]['dinner'];
+
+        document.getElementById(menu4 + "Breakfast").value = parsed[menu4]['breakfast'];
+        document.getElementById(menu4 + "Lunch").value = parsed[menu4]['lunch'];
+        document.getElementById(menu4 + "Dinner").value = parsed[menu4]['dinner'];
+
+        document.getElementById(menu5 + "Breakfast").value = parsed[menu5]['breakfast'];
+        document.getElementById(menu5 + "Lunch").value = parsed[menu5]['lunch'];
+        document.getElementById(menu5 + "Dinner").value = parsed[menu5]['dinner'];
+
+        document.getElementById(menu6 + "Special").value = parsed[menu6]['special'];
+
+        document.getElementById(menu7 + "Lunch").value = parsed[menu7]['lunch'];
+        document.getElementById(menu7 + "Dinner").value = parsed[menu7]['dinner'];
+
+        document.getElementById(menu8 + "Lunch").value = parsed[menu8]['lunch'];
+        document.getElementById(menu8 + "Dinner").value = parsed[menu8]['dinner'];    }
+})};
+</script>
+
+<script>
+
+var images = [ 'images/fruit.jpg', 'images/veggies.jpg', 'images/lemons.jpg', 'images/pancakes.jpg', 'images/raman.jpg', 'images/produce.jpg'],
+    index  = 0,
+    $top   = $('#background');
+
+setInterval(function() {
+   $top.animate({ opacity: 0 }, 500, function() {
+     $top.css('background-image', 'url('+images[++index]+')');
+     $top.animate({ opacity: 1 }, 500, function() {
+       if(index === images.length) index = 0;
+     });
+   });
+}, 6000);
+
+</script>
 </body>

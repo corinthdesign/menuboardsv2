@@ -21,80 +21,101 @@
   <div class="items">
     <!--Dynamic Menu Item-->
     <h2 class="header">Chef's Corner</h2>
-    <p id="demo1">Demo1</p>
+    <p id="demo1"></p>
     <h2 class="header">The Main Event</h2>
-    <p id="demo2">Demo2</p>
+    <p id="demo2"></p>
     <p id="demo3"></p>
     <p id="demo4"></p>
     <h2 class="header">Soups</h2>
-    <p id="demo5">Demo5</p>
-    <p id="demo6">Demo6</p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
     <p id="demo7"></p>
+    <p id="demo8"></p>
 </div>
 </div>
 
 <script>
-function getMeal() {
-
+/*Global variables to set day/time*/
 var i = new Date();
 var d = i.getDay();
 var h = i.getHours();
 
+/*Defines meal parameters and timing. Monday = 1, Sunday= 0*/
 function meal() {
-        if (d >= 1 && d <= 5 && h < 11 ) {
-  return 0
+        if (d >= 1 && d <= 5 && h < 11 ) { //if weekday before 11am
+  return "breakfast"
   }
-  else if (d >= 1 && d <= 5 && h >= 11 && h <= 15){
-  return 7
+  else if (d >= 1 && d <= 5 && h >= 11 && h <= 15){ //if weekday between 11am and 3pm
+  return "lunch"
   }
-  else if (h > 15){
-  return 14
+  else if (h > 15){ //any day after 3pm
+  return "dinner"
   }
-  else if (d === 6 && h <= 15){
-  return (21-6)
+  else if (d === 6 && h <= 15){ //if saturday after 3pm
+  return "brunch"
   }
-  else if (d === 0 && h <= 15){
-  return (22)
+  else if (d === 0 && h <= 15){ //if sunday after 3pm
+  return "brunch"
   }
   else {
   return "Meal not found"
   }
 }
 
-console.log("Day: " + d);
-console.log("Hour: " + h);
-console.log("Meal: " + meal());
-var today = d + meal()-1;
-console.log("This meal's index #: " + today);
-return today;
+let day;
+  switch (d) {
+  case 0:
+    day = "sunday";
+    break;
+  case 1:
+    day = "monday";
+    break;
+  case 2:
+     day = "tuesday";
+    break;
+  case 3:
+    day = "wednesday";
+    break;
+  case 4:
+    day = "thursday";
+    break;
+  case 5:
+    day = "friday";
+    break;
+  case 6:
+    day = "saturday";
 };
 
+
+//GET REQUEST//
 $.ajax({
-    type: 'POST',
+    type: 'GET',
     datatype: 'json',
-    url: '/php/get-data.php',
-    success: function(result) {
+    url: 'https://audining-9cd74.firebaseio.com' + '/' + day + '/' + '.json?auth=8xQwtUMfWoPPrHWitSXiBhR4brljTEWg6fUJnltP', //returns as "result" variable
+    success: function(result) { //returns as JSON object. This needs to become a JS object
+//DATA CONVERSION//
+      /*defines variables for selecting which menus to display*/
         var menu1 = "chefs";
         var menu2 = "main";
         var menu3 = "veg";
-        var menu4 = "piz"
-        var menu5 = "soup";
-        var menu6 = "soup2";
-        var menu7 = "grill";
-        var str = result; //Get-data.php JSON string object
-        var parsed = jQuery.parseJSON(str); // Parse the JSON string object to create a JS object
-        var data = parsed;
-        console.log(parsed);                    // All data for console.log
-        console.log("Menu: "+ menu1 + ", "+ menu2 + ", "+ menu3 + ", "+ menu4);
-        document.getElementById("demo1").innerHTML = parsed[getMeal()][menu1];
-        document.getElementById("demo2").innerHTML = parsed[getMeal()][menu2];
-        document.getElementById("demo3").innerHTML = parsed[getMeal()][menu3];
-        document.getElementById("demo4").innerHTML = parsed[getMeal()][menu4];
-        document.getElementById("demo5").innerHTML = parsed[getMeal()][menu5];
-        document.getElementById("demo6").innerHTML = parsed[getMeal()][menu6];
-        document.getElementById("demo7").innerHTML = parsed[getMeal()][menu7];
-  }
-});
+        var menu4 = "pizza";
+        var menu5 = "grill";
+        var menu6 = "deli";
+        var menu7 = "soup1";
+        var menu8 = "soup2";
+
+        var stringed = JSON.stringify(result); // Stringify the JSON object to return object as a string
+        var parsed = JSON.parse(stringed); // Converts JSON string object to a JS object called "parsed" that can now be selected dynamically
+//DATA PLACEMENT//
+        document.getElementById("demo1").innerHTML = parsed[menu1][meal()];
+        document.getElementById("demo2").innerHTML = parsed[menu2][meal()];
+        document.getElementById("demo3").innerHTML = parsed[menu3][meal()];
+        document.getElementById("demo4").innerHTML = parsed[menu4][meal()];
+        document.getElementById("demo5").innerHTML = parsed[menu5][meal()];
+        document.getElementById("demo6").innerHTML = parsed[menu6][meal()];
+        document.getElementById("demo7").innerHTML = parsed[menu7][meal()];
+        document.getElementById("demo8").innerHTML = parsed[menu8][meal()];
+      }});
 </script>
 <script>
 
@@ -106,21 +127,26 @@ if (d >= 1 && d <= 5 && h < 11 ) {
   $( "#menu" ).addClass("breakfast");
   document.getElementById("title").innerHTML = "Breakfast";
   $( ".header" ).addClass("hide");
+  $( "#demo5" ).addClass("hide");
+  $( "#demo6" ).addClass("hide");
   $( "#demo7" ).addClass("hide");
+  $( "#demo8").addClass("hide");
   }
   else if (d >= 1 && d <= 5 && h >= 11 && h <= 15){
   $( "#menu" ).addClass("lunch");
   document.getElementById("title").innerHTML = "Lunch";
   $( "#demo3" ).addClass("hide");
   $( "#demo4" ).addClass("hide");
-  $( "#demo7" ).addClass("hide");
+  $( "#demo5" ).addClass("hide");
+  $( "#demo6" ).addClass("hide");
   }
   else if (h > 15){
   $( "#menu" ).addClass("dinner");
   document.getElementById("title").innerHTML = "Dinner";
   $( "#demo3" ).addClass("hide");
   $( "#demo4" ).addClass("hide");
-  $( "#demo7" ).addClass("hide");
+  $( "#demo5" ).addClass("hide");
+  $( "#demo6" ).addClass("hide");
   }
   else if (d === 6 && h <= 15){
   $( "#menu" ).addClass("brunch");

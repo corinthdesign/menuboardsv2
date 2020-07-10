@@ -1,12 +1,13 @@
-
 html, body {
-	margin: 0;
-	padding: 0;
-	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(images/veggies.jpg);
+	background: linear-gradient(45deg,  rgba(0, 0, 0, 0.6),  rgba(0, 0, 0, 0.6)), url("images/pancakes.jpg");
+	background-color: rgba(0, 0, 0, 1);
 	background-size: 120%;
 	background-repeat: no-repeat;
 	background-position: bottom;
 	background-attachment: fixed;
+	margin: 0;
+	padding: 0;
+	font-family: "nunito", sans-serif;
 }
 
 body{
@@ -73,193 +74,6 @@ h3 {
   transition: all 0.35s ease;
 }
 
-.link {
-  width: 8.5em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: default;
-}
-
-.link a {
-  color: #FFF;
-  transition: all 0.2s ease;
-}
-
-.link a:hover, .veglink a:hover {
-  color: #FFF;
-}
-
-.link:hover {
-  color: #FFF;
-  width: 20em;
-}
-
-.pizlink {
-  width: 7.5em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: default;
-}
-
-.pizlink:hover {
-  color: #FFF;
-  width: 25em;
-}
-
-.pizlink a {
-  color: #FFF;
-  transition: all 0.2s ease;
-}
-
-.pizlink a:hover {
-  color: #FFF;
-}
-
-.grilllink {
-  width: 5.5em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: default;
-}
-
-.grilllink:hover {
-  color: #FFF;
-  width: 25em;
-}
-
-.grilllink a {
-  color: #FFF;
-  transition: all 0.2s ease;
-}
-
-.grilllink a:hover {
-  color: #FFF;
-}
-
-.veglink {
-  width: 13em;
-  overflow: hidden;
-  white-space: nowrap;
-  cursor: default;
-}
-
-.veglink:hover {
-  color: #FFF;
-  width: 25em;
-}
-
-.veglink a {
-  color: #FFF;
-  transition: all 0.2s ease;
-}
-
-.veglink a:hover {
-  color: #FFF;
-}
-
-.link a {
-  color: #FFF;
-  text-decoration: underline;
-}
-
-.link_none {
-  color: #FFF;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.link_none:hover {
-  color: #FFF;
-  width: 25em;
-}
-
-p, label {
-	font-family: 'Nunito', sans-serif;
-	font-size: .75em;
-	font-weight: 900;
-	text-align: left;
-	letter-spacing: auto;
-	text-transform: uppercase;
-	color: #545454;
-}
-
-.parameters {
-  padding: 0;
-  width: 30%;
-  position: relative;
-  left: -5em;
-	white-space:nowrap;
-}
-
-.parameters div {
-  padding-top: 2em;
-  padding-bottom: 2em;
-}
-
-.day_selection {
-  display: inline-block;
-  position: relative;
-  width: 15vw;
-	padding-left: 5em;
-	text-align: center;
-}
-
-.meal_selection {
-  display: inline-block;
-  position: relative;
-  width: 15vw;
-	text-align: center;
-}
-
-.day_selection label, .meal_selection label {
-  position: relative;
-	color: #fff;
-}
-
-.day_selection h3, .day_selection select, .meal_selection h3, .meal_selection select {
-  text-align: center;
-  display: block;
-  position: relative;
-  margin: 0 auto;
-}
-
-.fields {
-  display: inline-block;
-  position: relative;
-  float: left;
-  width: 30%;
-	height: 80%;
-  padding-bottom: 5em;
-  padding-left: 5em;
-}
-
-.fields input {
-  width: 100%;
-}
-
-.days {
-  display: inline-block;
-  position: relative;
-  float: right;
-  width: 60%;
-  top: 10em;
-  padding-right: 5em;
-}
-
-.days div {
-  padding: 1em;
-}
-
-.days table {
-  background-color: #f1f1f1;
-  padding: 1em;
-}
-
-td {
-  border: #fff 2px solid;
-  background-color: #fff;
-}
-
 #submit {
   padding: .25em 2em;
 	opacity: 1;
@@ -308,9 +122,15 @@ button:hover {
   cursor: pointer;
 }
 
+form {
+	color: #fff;
+	font-family: "nunito";
+}
+
 form input {
   border: none;
-  padding: 0.25em 1em;
+  padding: 0.25em 1.25em;
+	border-radius: 1000px;
 }
 
 form select {
@@ -328,27 +148,12 @@ form select {
   border-radius: 10000px;
 }
 
-#ccb, #ccbr, #ccl, #ccd, #meb, #mebr, #mel, #med, #vegb, #vegbr, #vegl, #vegd,
-#pizb, #pizbr, #pizl, #pizd, #grb, #grbr, #grl, #grd, #delb, #delbr, #dell, #deld, #soup1, #soup2 {
-  font-weight: 100;
-}
-
-.preview_table, .preview_table iframe {
-  position: relative;
-  display: block;
-  width: 100%;;
-  height: 40vh;
-  border: 2px #0090fe 3px;
-}
-
-.preview_table {
-	position: relative;
+.fields form {
+	margin: 0 auto;
 	display: block;
-	float: right;
-	top: -75vh;
-	left: 32.5vw;
+	width: 50vw;
+	padding: 0 25vw;
 }
-/* {border: 1px rgba(0, 0, 0, 0.2) dashed;}*/
 
 #return {
 	display: block;
@@ -365,4 +170,23 @@ form select {
 
 #return:hover {
 	padding: 1.25em 1.25em 1.25em 2em;
+}
+
+#logout {
+	display: block;
+	position: absolute;
+	font-family: "Josefin Sans", sans-serif;
+	top: 0;
+	width: auto;
+	margin: 0;
+	right: 0em;
+	float: right;
+	border-radius: 1000px 0 0 1000px;
+	padding: 1.25em;
+	z-index: 100;
+	transition: all 0.4s ease;
+}
+
+#logout:hover {
+	padding: 1.25em 2em 1.25em 1.25em;
 }

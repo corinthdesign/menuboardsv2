@@ -38,19 +38,19 @@ var h = i.getHours();
 /*Defines meal parameters and timing. Monday = 1, Sunday= 0*/
 function meal() {
         if (d >= 1 && d <= 5 && h < 11 ) { //if weekday before 11am
-  return "Breakfast"
+  return "breakfast"
   }
   else if (d >= 1 && d <= 5 && h >= 11 && h <= 15){ //if weekday between 11am and 3pm
-  return "Lunch"
+  return "lunch"
   }
   else if (h > 15){ //any day after 3pm
-  return "Dinner"
+  return "dinner"
   }
   else if (d === 6 && h <= 15){ //if saturday after 3pm
-  return "Brunch"
+  return "brunch"
   }
   else if (d === 0 && h <= 15){ //if sunday after 3pm
-  return "Brunch"
+  return "brunch"
   }
   else {
   return "Meal not found"
@@ -60,25 +60,25 @@ function meal() {
 let day;
   switch (d) {
   case 0:
-    day = "Sunday";
+    day = "sunday";
     break;
   case 1:
-    day = "Monday";
+    day = "monday";
     break;
   case 2:
-     day = "Tuesday";
+     day = "tuesday";
     break;
   case 3:
-    day = "Wednesday";
+    day = "wednesday";
     break;
   case 4:
-    day = "Thursday";
+    day = "thursday";
     break;
   case 5:
-    day = "Friday";
+    day = "friday";
     break;
   case 6:
-    day = "Saturday";
+    day = "saturday";
 };
 
 /*AJAX request to Firebase database to retreive data, convert it to JS object, and data placement*/
@@ -87,24 +87,24 @@ let day;
 $.ajax({
     type: 'GET',
     datatype: 'json',
-    url: 'https://audining-9cd74.firebaseio.com/menus.json?auth=8xQwtUMfWoPPrHWitSXiBhR4brljTEWg6fUJnltP', //returns as "result" variable
+    url: 'https://audining-9cd74.firebaseio.com' + '/' + day + '/' + '.json?auth=8xQwtUMfWoPPrHWitSXiBhR4brljTEWg6fUJnltP', //returns as "result" variable
     success: function(result) { //returns as JSON object. This needs to become a JS object
 //DATA CONVERSION//
       /*defines variables for selecting which menus to display*/
-        var menu1 = "Chefs";
-        var menu2 = "Main";
-        var menu3 = "Vegetarian";
-        var menu4 = "Pizza";
+        var menu1 = "chefs";
+        var menu2 = "main";
+        var menu3 = "vegetarian";
+        var menu4 = "pizza";
         var stringed = JSON.stringify(result); // Stringify the JSON object to return object as a string
         var parsed = JSON.parse(stringed); // Converts JSON string object to a JS object called "parsed" that can now be selected dynamically
 //DATA PLACEMENT//
         if (meal() === "Brunch") { //if today is "brunch" display these items
-        document.getElementById("demo1").innerHTML = parsed[day][menu1][meal()];
-        document.getElementById("demo2").innerHTML = parsed[day][menu1][meal()];
-        document.getElementById("demo3").innerHTML = parsed[day][menu1][meal()];
-        document.getElementById("demo4").innerHTML = parsed[day][menu1][meal()];
+        document.getElementById("demo1").innerHTML = parsed[menu1][meal()];
+        document.getElementById("demo2").innerHTML = parsed[menu2][meal()];
+        document.getElementById("demo3").innerHTML = parsed[menu3][meal()];
+        document.getElementById("demo4").innerHTML = parsed[menu4][meal()];
       }else{ //else display these items
-        document.getElementById("demo4").innerHTML = parsed[day][menu1][meal()];
+        document.getElementById("demo4").innerHTML = parsed[menu1][meal()];
       }
 
 //DEBUGGING//
